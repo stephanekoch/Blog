@@ -402,4 +402,5 @@ body.dark .footer-links a:hover { color: #ccc; }
   .essay-sidebar { display: none; }
   .essay-main { border-left: none; padding: 20px 0 40px; }
   .nav-inner { max-width: 100% !important; padding-left: var(--pad) !important; padding-right: var(--pad) !important; }
+  .mobile-contents-btn { display: flex; }
 }

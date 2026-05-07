@@ -11,7 +11,9 @@
       "Bash(curl -s http://localhost:3000)",
       "Bash(curl -s http://localhost:3000/essays)",
       "Bash(curl -s http://localhost:3000/about)",
-      "Bash(pkill -f \"next dev\")"
+      "Bash(pkill -f \"next dev\")",
+      "Bash(git push *)",
+      "WebFetch(domain:blog-nine-murex-17.vercel.app)"
     ]
   }
 }

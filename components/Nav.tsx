@@ -78,7 +78,6 @@ export function Nav({ config }: { config: SiteConfig }) {
             {isEssayRoute && headings.length > 0 && (
               <button
                 className="mobile-contents-btn"
-                style={{ display: 'flex' }}
                 onClick={() => setMobileOpen(o => !o)}
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0 }}>
