@@ -7,7 +7,11 @@
       "Bash(npm run *)",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000/essays)",
+      "Bash(curl -s http://localhost:3000/about)",
+      "Bash(pkill -f \"next dev\")"
     ]
   }
 }
