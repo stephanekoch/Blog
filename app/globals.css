@@ -73,7 +73,7 @@ body.dark .toggle-thumb { left: 16px; background: #ccc; border-color: #aaa; }
 .toggle-labels {
   display: flex; gap: 3px;
   font-family: var(--sans); font-size: 9px;
-  color: var(--text-faint); letter-spacing: 0.03em;
+  color: #aaa; letter-spacing: 0.03em;
 }
 body.dark .toggle-labels { color: #666; }
 .toggle-labels .on { color: var(--text-secondary); font-weight: 500; }
