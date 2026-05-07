@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steph Koch-Yang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:              #faf9f7;
+    --bg-dark:         #383838;
+    --text-primary:    #1a1a1a;
+    --text-primary-dk: #f0f0ee;
+    --text-secondary:  #888;
+    --text-muted:      #999;
+    --text-muted-dk:   #aaa;
+    --text-faint:      #ccc;
+    --text-faint-dk:   #777;
+    --border:          #e8e8e4;
+    --border-dk:       #484848;
+    --border-row:      #f0f0f0;
+    --border-row-dk:   #464646;
+    --surface:         #f4f3f0;
+    --serif: 'Lora', Georgia, serif;
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --max:          640px;
+    --pad:          32px;
+    --essay-max:    880px;
+    --sidebar-w:    180px;
+    --essay-gap:    32px;
+    --essay-pad:    32px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text-primary);
+    transition: background 0.25s, color 0.25s;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  body.dark { background: var(--bg-dark); color: var(--text-primary-dk); }
+
+  /* ── NAV ── */
+  .site-nav {
+    position: sticky; top: 0; z-index: 200;
+    background: var(--bg); transition: background 0.25s;
+  }
+  body.dark .site-nav { background: var(--bg-dark); }
+
+  .nav-inner {
+    max-width: var(--max); margin: 0 auto;
+    padding: 20px var(--pad) 0;
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+
+  .toggle-wrap {
+    display: flex; align-items: center; gap: 6px;
+    cursor: pointer; margin-bottom: 22px;
+  }
+  .toggle-track {
+    width: 28px; height: 14px; border-radius: 7px;
+    position: relative; border: 0.5px solid #d0d0cc;
+    background: #e4e4e0; transition: background 0.25s; flex-shrink: 0;
+  }
+  body.dark .toggle-track { background: #555; border-color: #666; }
+  .toggle-thumb {
+    width: 10px; height: 10px; border-radius: 50%;
+    position: absolute; top: 2px; left: 2px;
+    background: #fff; border: 0.5px solid #ccc;
+    transition: left 0.2s, background 0.2s;
+  }
+  body.dark .toggle-thumb { left: 16px; background: #ccc; border-color: #aaa; }
+  .toggle-labels {
+    display: flex; gap: 3px;
+    font-family: var(--sans); font-size: 9px;
+    color: var(--text-faint); letter-spacing: 0.03em;
+  }
+  body.dark .toggle-labels { color: #666; }
+  .toggle-labels .on { color: var(--text-secondary); font-weight: 500; }
+  body.dark .toggle-labels .on { color: #aaa; }
+
+  .nav-name {
+    font-family: var(--serif); font-size: 12px; font-weight: 700; color: #000;
+    cursor: pointer; text-decoration: none; margin-bottom: 6px;
+    transition: color 0.15s; line-height: 1;
+  }
+  .nav-name:hover { color: #444; }
+  body.dark .nav-name { color: #fff; }
+  body.dark .nav-name:hover { color: #ccc; }
+
+  /* nav-links row: links left, contents button right on mobile essay page */
+  .nav-links {
+    display: flex; gap: 24px; margin-bottom: 10px;
+    align-items: center; width: 100%;
+  }
+  .nav-links a {
+    font-family: var(--sans); font-size: 14px; font-weight: 500;
+    color: var(--text-secondary); text-decoration: none;
+    cursor: pointer; transition: color 0.15s;
+  }
+  .nav-links a:hover, .nav-links a.curr { color: var(--text-primary); }
+  body.dark .nav-links a { color: var(--text-muted-dk); }
+  body.dark .nav-links a:hover,
+  body.dark .nav-links a.curr { color: var(--text-primary-dk); }
+
+  /* mobile contents button — hidden by default, shown on mobile essay page */
+  .mobile-contents-btn {
+    display: none;
+    margin-left: auto;
+    align-items: center; gap: 6px;
+    font-family: var(--sans); font-size: 11px; font-weight: 500;
+    color: var(--text-secondary);
+    background: #eeece8;
+    border: 0.5px solid #dddbd6;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .mobile-contents-btn:hover { background: #e4e2de; color: var(--text-primary); }
+  body.dark .mobile-contents-btn {
+    background: #484848; border-color: #555;
+    color: #ccc;
+  }
+  body.dark .mobile-contents-btn:hover { background: #525252; color: #f0f0ee; }
+
+  .nav-tagline-wrap {
+    max-height: 40px; overflow: hidden; opacity: 1;
+    transition: max-height 0.35s ease, opacity 0.35s ease, margin 0.35s ease;
+    margin-bottom: 14px;
+  }
+  .nav-tagline-wrap.hidden { max-height: 0; opacity: 0; margin-bottom: 0; }
+  .nav-tagline {
+    font-family: var(--serif); font-size: 11px; font-style: italic;
+    color: #888; line-height: 1.5;
+  }
+  body.dark .nav-tagline { color: #aaa; }
+
+  .nav-rule { height: 0.5px; background: var(--border); }
+  body.dark .nav-rule { background: var(--border-dk); }
+
+  /* mobile contents panel */
+  .mobile-contents-panel {
+    display: none;
+    position: fixed; top: 130px; right: 16px; z-index: 300;
+    background: var(--bg); border: 0.5px solid var(--border);
+    border-radius: 8px; padding: 16px 20px; min-width: 190px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  body.dark .mobile-contents-panel {
+    background: #2e2e2e; border-color: #484848;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .mobile-contents-panel.open { display: block; }
+  .mobile-back {
+    display: block; margin-bottom: 14px;
+    font-family: var(--sans); font-size: 10px; font-weight: 500;
+    color: var(--text-primary); letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none; cursor: pointer;
+  }
+  body.dark .mobile-back { color: var(--text-primary-dk); }
+
+  /* ── LAYOUT ── */
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+  .page { display: none; }
+  .page.visible { display: block; }
+
+  .rule { height: 0.5px; background: var(--border); }
+  body.dark .rule { background: var(--border-dk); }
+  .section { padding: 40px 0; }
+
+  .section-label {
+    font-family: var(--serif); font-size: 18px; font-weight: 500;
+    color: var(--text-primary); margin-bottom: 24px;
+  }
+  body.dark .section-label { color: var(--text-primary-dk); }
+
+  .item-row {
+    padding: 16px 0; border-bottom: 0.5px solid var(--border-row); cursor: pointer;
+  }
+  .item-row:first-of-type { border-top: 0.5px solid var(--border-row); }
+  body.dark .item-row, body.dark .item-row:first-of-type { border-color: var(--border-row-dk); }
+  .item-row:hover .item-title { color: #111; }
+  body.dark .item-row:hover .item-title { color: #f5f5f3; }
+
+  .item-title {
+    font-family: var(--serif); font-size: 16px; font-weight: 400;
+    color: #2a2a2a; line-height: 1.5; margin-bottom: 6px; transition: color 0.15s;
+  }
+  body.dark .item-title { color: #d0d0ce; }
+
+  .item-meta { font-family: var(--sans); font-size: 11px; color: var(--text-muted); }
+  body.dark .item-meta { color: var(--text-muted-dk); }
+
+  .item-dot {
+    display: inline-block; width: 2px; height: 2px; border-radius: 50%;
+    background: #ddd; margin: 0 6px; vertical-align: middle;
+  }
+  body.dark .item-dot { background: #666; }
+
+  .all-link {
+    display: inline-block; margin-top: 20px;
+    font-family: var(--sans); font-size: 12px;
+    color: var(--text-faint); text-decoration: none; cursor: pointer; transition: color 0.15s;
+  }
+  .all-link:hover { color: #666; }
+  body.dark .all-link { color: var(--text-faint-dk); }
+  body.dark .all-link:hover { color: #bbb; }
+
+  .back-link {
+    display: inline-block; margin-bottom: 8px;
+    font-family: var(--sans); font-size: 10px;
+    color: var(--text-muted); letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none; cursor: pointer; transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--text-primary); }
+  body.dark .back-link { color: var(--text-muted-dk); }
+  body.dark .back-link:hover { color: var(--text-primary-dk); }
+
+  /* ── HOMEPAGE ── */
+  .bio-section { padding: 28px 0 36px; }
+  .bio-text {
+    font-family: var(--sans); font-size: 13px;
+    color: var(--text-muted); line-height: 1.8; max-width: 500px;
+  }
+  body.dark .bio-text { color: var(--text-muted-dk); }
+
+  /* ── LIST PAGES ── */
+  .page-hero { padding: 28px 0 20px; }
+  .page-title {
+    font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--text-primary);
+  }
+  body.dark .page-title { color: var(--text-primary-dk); }
+
+  .list-row {
+    padding: 22px 0; border-bottom: 0.5px solid var(--border-row); cursor: pointer;
+  }
+  .list-row:first-of-type { border-top: 0.5px solid var(--border-row); }
+  body.dark .list-row, body.dark .list-row:first-of-type { border-color: var(--border-row-dk); }
+  .list-row:hover .lr-title { color: #111; }
+  body.dark .list-row:hover .lr-title { color: #f5f5f3; }
+
+  .lr-title {
+    font-family: var(--serif); font-size: 17px; font-weight: 400;
+    color: var(--text-primary); line-height: 1.45; margin-bottom: 8px; transition: color 0.15s;
+  }
+  body.dark .lr-title { color: #d0d0ce; }
+
+  .lr-excerpt {
+    font-family: var(--serif); font-size: 14px; font-style: italic;
+    color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px;
+  }
+  body.dark .lr-excerpt { color: #999; }
+
+  .lr-meta { font-family: var(--sans); font-size: 11px; color: var(--text-muted); }
+  body.dark .lr-meta { color: var(--text-muted-dk); }
+
+  .load-more {
+    display: inline-block; margin: 22px 0 36px;
+    font-family: var(--sans); font-size: 12px; color: var(--text-muted);
+    border: 0.5px solid var(--border); padding: 8px 20px;
+    border-radius: 4px; background: none; cursor: pointer; transition: color 0.15s, border-color 0.15s;
+  }
+  .load-more:hover { color: #555; border-color: #bbb; }
+  body.dark .load-more { color: var(--text-muted-dk); border-color: #4a4a4a; }
+  body.dark .load-more:hover { color: #ddd; border-color: #777; }
+
+  /* ── SINGLE ESSAY ── */
+  .essay-layout {
+    display: flex; padding: 0 var(--essay-pad);
+    max-width: var(--essay-max); margin: 0 auto;
+  }
+
+  .essay-sidebar { width: var(--sidebar-w); flex-shrink: 0; padding: 24px var(--essay-gap) 40px 0; }
+
+  .sidebar-back-fixed {
+    display: block;
+    font-family: var(--sans); font-size: 10px; font-weight: 500;
+    color: var(--text-primary); letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer; transition: color 0.15s;
+    position: sticky; top: 130px; background: var(--bg); padding-bottom: 16px; z-index: 10;
+  }
+  .sidebar-back-fixed:hover { color: #555; }
+  body.dark .sidebar-back-fixed { color: var(--text-primary-dk); background: var(--bg-dark); }
+  body.dark .sidebar-back-fixed:hover { color: #ccc; }
+
+  .sidebar-contents { position: sticky; top: 174px; }
+
+  .sidebar-label {
+    font-family: var(--sans); font-size: 10px; color: var(--text-muted);
+    letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 14px;
+  }
+  body.dark .sidebar-label { color: var(--text-muted-dk); }
+
+  .sidebar-item {
+    font-family: var(--sans); font-size: 12px; color: var(--text-muted);
+    line-height: 1.5; margin-bottom: 12px; cursor: pointer;
+    padding-left: 10px; border-left: 1.5px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .sidebar-item:hover { color: #555; border-left-color: #ccc; }
+  .sidebar-item.active { color: var(--text-primary); border-left-color: var(--text-primary); }
+  body.dark .sidebar-item { color: var(--text-muted-dk); }
+  body.dark .sidebar-item:hover { color: #ddd; border-left-color: #999; }
+  body.dark .sidebar-item.active { color: #f0f0ee; border-left-color: #f0f0ee; }
+
+  .essay-main {
+    flex: 1; min-width: 0;
+    border-left: 0.5px solid var(--border-row);
+    padding: 24px 0 48px 32px;
+  }
+  body.dark .essay-main { border-color: var(--border-row-dk); }
+
+  .essay-h1 {
+    font-family: var(--serif); font-size: 24px; font-weight: 500;
+    color: var(--text-primary); line-height: 1.35; margin-bottom: 12px;
+  }
+  body.dark .essay-h1 { color: var(--text-primary-dk); }
+
+  .essay-byline { font-family: var(--sans); font-size: 12px; color: var(--text-muted); margin-bottom: 22px; }
+  body.dark .essay-byline { color: var(--text-muted-dk); }
+
+  .essay-body p { font-family: var(--serif); font-size: 16px; color: #333; line-height: 1.9; margin-bottom: 22px; }
+  body.dark .essay-body p { color: #c8c8c6; }
+
+  .essay-body h2 {
+    font-family: var(--serif); font-size: 17px; font-weight: 500;
+    color: var(--text-primary); margin: 32px 0 12px; scroll-margin-top: 120px;
+  }
+  body.dark .essay-body h2 { color: var(--text-primary-dk); }
+
+  .embed-zone { margin: 28px 0; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; }
+  body.dark .embed-zone { border-color: var(--border-dk); }
+  .embed-zone-label {
+    font-family: var(--sans); font-size: 10px; color: var(--text-muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 10px 16px; background: var(--surface); border-bottom: 0.5px solid var(--border);
+  }
+  body.dark .embed-zone-label { background: #2a2a2a; border-color: var(--border-dk); color: var(--text-muted-dk); }
+  .embed-zone-body { padding: 18px 16px; background: #fff; min-height: 80px; }
+  body.dark .embed-zone-body { background: #2e2e2e; }
+  .embed-placeholder { font-family: var(--serif); font-size: 13px; font-style: italic; color: #ccc; }
+  body.dark .embed-placeholder { color: #777; }
+
+  .linked-card { margin: 28px 0 0; padding: 16px 20px; background: var(--surface); border: 0.5px solid var(--border); border-radius: 8px; }
+  body.dark .linked-card { background: #2a2a2a; border-color: var(--border-dk); }
+  .linked-card-label { font-family: var(--sans); font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  body.dark .linked-card-label { color: var(--text-muted-dk); }
+  .linked-card-title { font-family: var(--serif); font-size: 14px; font-weight: 500; color: var(--text-primary); cursor: pointer; transition: color 0.15s; }
+  .linked-card-title:hover { color: #555; }
+  body.dark .linked-card-title { color: #d8d8d6; }
+  body.dark .linked-card-title:hover { color: #fff; }
+  .linked-card-desc { font-family: var(--sans); font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-top: 4px; }
+  body.dark .linked-card-desc { color: var(--text-muted-dk); }
+
+  /* ── SINGLE TOOL ── */
+  .tool-header { padding: 28px 0 20px; }
+  .tool-h1 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--text-primary); line-height: 1.35; margin-bottom: 10px; }
+  body.dark .tool-h1 { color: var(--text-primary-dk); }
+  .tool-meta-line { font-family: var(--sans); font-size: 12px; color: var(--text-muted); }
+  body.dark .tool-meta-line { color: var(--text-muted-dk); }
+  .tool-body { padding: 24px 0 16px; }
+  .tool-body p { font-family: var(--serif); font-size: 16px; color: #444; line-height: 1.9; margin-bottom: 18px; }
+  body.dark .tool-body p { color: #c8c8c6; }
+  .tool-body h2 { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--text-primary); margin: 26px 0 10px; letter-spacing: 0.02em; }
+  body.dark .tool-body h2 { color: var(--text-primary-dk); }
+
+  .tool-interactive { margin: 22px 0; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; }
+  body.dark .tool-interactive { border-color: var(--border-dk); }
+  .tool-interactive-label { font-family: var(--sans); font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 16px; background: var(--surface); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  body.dark .tool-interactive-label { background: #2a2a2a; border-color: var(--border-dk); color: var(--text-muted-dk); }
+  .tool-dl-btn { font-family: var(--sans); font-size: 10px; color: #888; border: 0.5px solid #ddd; padding: 3px 10px; border-radius: 3px; background: #fff; cursor: pointer; transition: color 0.15s; }
+  .tool-dl-btn:hover { color: #333; border-color: #aaa; }
+  body.dark .tool-dl-btn { background: #333; border-color: #555; color: #bbb; }
+  .tool-interactive-body { padding: 18px 16px; background: #fff; }
+  body.dark .tool-interactive-body { background: #2e2e2e; }
+
+  .mock-tool { display: flex; flex-direction: column; gap: 8px; }
+  .mock-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--bg); border: 0.5px solid var(--border-row); border-radius: 4px; font-family: var(--sans); font-size: 13px; color: #555; }
+  body.dark .mock-item { background: #333; border-color: #444; color: #bbb; }
+  .mock-check { width: 15px; height: 15px; border-radius: 3px; border: 0.5px solid #ddd; background: #fff; flex-shrink: 0; }
+  body.dark .mock-check { background: #2e2e2e; border-color: #555; }
+  .mock-check.done { background: #e4e4e0; border-color: #ccc; }
+  body.dark .mock-check.done { background: #555; border-color: #666; }
+  .mock-add { font-family: var(--sans); font-size: 12px; color: #bbb; cursor: pointer; padding: 7px 12px; border: 0.5px dashed #e0e0dc; border-radius: 4px; text-align: center; }
+  body.dark .mock-add { color: #777; border-color: #444; }
+
+  /* ── ABOUT ── */
+  .about-hero { padding: 28px 0 28px; }
+  .about-name { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--text-primary); margin-bottom: 22px; }
+  body.dark .about-name { color: var(--text-primary-dk); }
+  .about-body p { font-family: var(--serif); font-size: 16px; color: #444; line-height: 1.9; margin-bottom: 18px; }
+  body.dark .about-body p { color: #c8c8c6; }
+  .about-section-title { font-family: var(--sans); font-size: 11px; font-weight: 500; color: var(--text-primary); margin: 28px 0 14px; letter-spacing: 0.07em; text-transform: uppercase; }
+  body.dark .about-section-title { color: var(--text-primary-dk); }
+  .logos-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+  .logo-pill { font-family: var(--sans); font-size: 11px; font-weight: 500; color: #888; border: 0.5px solid #e0e0dc; padding: 6px 16px; border-radius: 20px; background: #fff; }
+  body.dark .logo-pill { background: #333; border-color: #555; color: #bbb; }
+  .about-links-wrap { padding-bottom: 40px; }
+  .about-link-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 0.5px solid var(--border-row); }
+  .about-link-row:first-of-type { border-top: 0.5px solid var(--border-row); }
+  body.dark .about-link-row, body.dark .about-link-row:first-of-type { border-color: var(--border-row-dk); }
+  .about-link-label { font-family: var(--sans); font-size: 13px; color: #2a2a2a; }
+  body.dark .about-link-label { color: #d8d8d6; }
+  .about-link-url { font-family: var(--sans); font-size: 12px; color: var(--text-muted); cursor: pointer; transition: color 0.15s; }
+  .about-link-url:hover { color: #555; }
+  body.dark .about-link-url { color: var(--text-muted-dk); }
+  body.dark .about-link-url:hover { color: #eee; }
+
+  /* ── FOOTER ── */
+  .footer { padding: 24px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-family: var(--sans); font-size: 11px; color: var(--text-faint); }
+  body.dark .footer-copy { color: var(--text-faint-dk); }
+  .footer-links { display: flex; gap: 18px; }
+  .footer-links a { font-family: var(--sans); font-size: 11px; color: var(--text-faint); text-decoration: none; cursor: pointer; transition: color 0.15s; }
+  .footer-links a:hover { color: #555; }
+  body.dark .footer-links a { color: var(--text-faint-dk); }
+  body.dark .footer-links a:hover { color: #ccc; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    :root { --pad: 20px; --essay-pad: 20px; }
+    .essay-layout { flex-direction: column; }
+    .essay-sidebar { display: none; }
+    .essay-main { border-left: none; padding: 20px 0 40px; }
+    .nav-inner { max-width: 100% !important; padding-left: var(--pad) !important; padding-right: var(--pad) !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner" id="navInner">
+    <div class="toggle-wrap" onclick="toggleDark()">
+      <div class="toggle-track"><div class="toggle-thumb"></div></div>
+      <div class="toggle-labels">
+        <span id="lblLight" class="on">Light</span><span>/</span><span id="lblDark">Dark</span>
+      </div>
+    </div>
+    <a class="nav-name" onclick="show('home')">Steph Koch-Yang</a>
+    <div class="nav-links">
+      <a onclick="show('essays')" data-page="essays">Essays</a>
+      <a onclick="show('tools')"  data-page="tools">Tools</a>
+      <a onclick="show('about')"  data-page="about">About</a>
+      <!-- Mobile contents button — shown only on essay page on mobile -->
+      <button class="mobile-contents-btn" id="mobileContentsBtn" onclick="toggleMobileContents()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0">
+          <line x1="1" y1="3"  x2="13" y2="3"  stroke="currentColor" stroke-width="1.3"/>
+          <line x1="1" y1="7"  x2="13" y2="7"  stroke="currentColor" stroke-width="1.3"/>
+          <line x1="1" y1="11" x2="9"  y2="11" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+        Contents
+      </button>
+    </div>
+    <div class="nav-tagline-wrap" id="navTagline">
+      <div class="nav-tagline">Notes on running organisations, building in fintech, and what AI actually changes for operators.</div>
+    </div>
+  </div>
+  <div class="nav-rule"></div>
+</nav>
+
+<!-- Mobile contents panel -->
+<div class="mobile-contents-panel" id="mobileContentsPanel">
+  <a class="mobile-back" onclick="show('essays');closeMobileContents()">← Essays</a>
+  <div class="sidebar-label">Contents</div>
+  <div class="sidebar-item" onclick="scrollToSection('s-overview');closeMobileContents()">Overview</div>
+  <div class="sidebar-item" onclick="scrollToSection('s-structural');closeMobileContents()">Why this happens</div>
+  <div class="sidebar-item" onclick="scrollToSection('s-costs');closeMobileContents()">What it costs</div>
+  <div class="sidebar-item" onclick="scrollToSection('s-fix');closeMobileContents()">The fix</div>
+  <div class="sidebar-item" onclick="scrollToSection('s-tool');closeMobileContents()">Related tool</div>
+</div>
+
+<!-- ════ HOMEPAGE ════ -->
+<div class="page visible" id="home">
+  <div class="wrap">
+    <div class="section">
+      <div class="section-label">Essays</div>
+      <div class="item-row" onclick="show('essay-single')"><div class="item-title">Why large organisations become information black holes</div><div class="item-meta">May 2025 <span class="item-dot"></span> 6 min</div></div>
+      <div class="item-row"><div class="item-title">The hidden tax of cross-functional alignment</div><div class="item-meta">Apr 2025 <span class="item-dot"></span> 4 min</div></div>
+      <div class="item-row"><div class="item-title">What PLG actually does to your org design</div><div class="item-meta">Mar 2025 <span class="item-dot"></span> 5 min</div></div>
+      <div class="item-row"><div class="item-title">Why most B2B fintech GTM breaks at scale</div><div class="item-meta">Feb 2025 <span class="item-dot"></span> 7 min</div></div>
+      <a class="all-link" onclick="show('essays')">All essays →</a>
+    </div>
+    <div class="rule"></div>
+    <div class="section">
+      <div class="section-label">Tools</div>
+      <div class="item-row" onclick="show('tool-single')"><div class="item-title">Meeting synthesis workflow</div><div class="item-meta">May 2025</div></div>
+      <div class="item-row"><div class="item-title">GTM knowledge copilot</div><div class="item-meta">Apr 2025</div></div>
+      <div class="item-row"><div class="item-title">Org decision tracker</div><div class="item-meta">Mar 2025</div></div>
+      <a class="all-link" onclick="show('tools')">All tools →</a>
+    </div>
+    <div class="rule"></div>
+    <div class="bio-section"><p class="bio-text">I'm Steph Koch-Yang. I run a global financial services organisation and have spent the last decade working across fintech, marketplaces, and GTM at scale. This is where I think out loud — and build in public.</p></div>
+    <div class="rule"></div>
+    <footer class="footer"><div class="footer-inner"><span class="footer-copy">Steph Koch-Yang</span><div class="footer-links"><a>LinkedIn</a><a>Contact</a></div></div></footer>
+  </div>
+</div>
+
+<!-- ════ ESSAYS LIST ════ -->
+<div class="page" id="essays">
+  <div class="wrap">
+    <div class="page-hero"><a class="back-link" onclick="show('home')">← Home</a><div class="page-title">Essays</div></div>
+    <div class="rule"></div>
+    <div style="padding:4px 0 0">
+      <div class="list-row" onclick="show('essay-single')"><div class="lr-title">Why large organisations become information black holes</div><div class="lr-excerpt">The bigger a company gets, the more it compresses information before passing it upward. Here's the structural reason why — and what it costs.</div><div class="lr-meta">May 2025 <span class="item-dot"></span> 6 min read</div></div>
+      <div class="list-row"><div class="lr-title">The hidden tax of cross-functional alignment</div><div class="lr-excerpt">Every handoff between teams has a cost. Most organisations don't measure it — and that's exactly the problem.</div><div class="lr-meta">Apr 2025 <span class="item-dot"></span> 4 min read</div></div>
+      <div class="list-row"><div class="lr-title">What PLG actually does to your org design</div><div class="lr-excerpt">Product-led growth isn't just a go-to-market motion. It restructures who owns what — and most orgs aren't ready for that.</div><div class="lr-meta">Mar 2025 <span class="item-dot"></span> 5 min read</div></div>
+      <div class="list-row"><div class="lr-title">Why most B2B fintech GTM breaks at scale</div><div class="lr-excerpt">The playbook that works at £1M ARR rarely survives to £10M. Here's what changes, and why most teams miss the inflection point.</div><div class="lr-meta">Feb 2025 <span class="item-dot"></span> 7 min read</div></div>
+      <div class="load-more">Load more</div>
+    </div>
+    <div class="rule"></div>
+    <footer class="footer"><div class="footer-inner"><span class="footer-copy">Steph Koch-Yang</span><div class="footer-links"><a>LinkedIn</a><a>Contact</a></div></div></footer>
+  </div>
+</div>
+
+<!-- ════ SINGLE ESSAY ════ -->
+<div class="page" id="essay-single">
+  <div class="essay-layout">
+    <div class="essay-sidebar">
+      <a class="sidebar-back-fixed" onclick="show('essays')">← Essays</a>
+      <div class="sidebar-contents">
+        <div class="sidebar-label">Contents</div>
+        <div class="sidebar-item active" onclick="scrollToSection('s-overview')">Overview</div>
+        <div class="sidebar-item" onclick="scrollToSection('s-structural')">Why this happens</div>
+        <div class="sidebar-item" onclick="scrollToSection('s-costs')">What it costs</div>
+        <div class="sidebar-item" onclick="scrollToSection('s-fix')">The fix</div>
+        <div class="sidebar-item" onclick="scrollToSection('s-tool')">Related tool</div>
+      </div>
+    </div>
+    <div class="essay-main">
+      <div class="essay-h1">Why large organisations become information black holes</div>
+      <div class="essay-byline">Steph Koch-Yang <span class="item-dot"></span> May 2025 <span class="item-dot"></span> 6 min read</div>
+      <div class="rule"></div>
+      <div class="essay-body" style="padding-top:22px">
+        <span id="s-overview"></span>
+        <p>The bigger a company gets, the more it compresses information before passing it upward. A frontline team observes ten signals. Their manager synthesises those into three. Their director condenses those into one. By the time anything reaches an executive, what started as rich, nuanced context has become a single headline.</p>
+        <h2 id="s-structural">Why this happens structurally</h2>
+        <p>It isn't malicious. It's rational. Every layer of management is optimising for what their audience can process. Executives have limited time. Meetings have fixed agendas. So information gets filtered — and the filters are never neutral. They reflect the assumptions, anxieties, and incentives of whoever is doing the filtering.</p>
+        <h2 id="s-costs">What it costs</h2>
+        <p>Decisions get made on compressed data. Problems that were obvious at ground level surprise leadership six months later. Strategies that made sense in the boardroom fail in the field because the field's reality never made it into the room.</p>
+        <h2 id="s-fix">The fix</h2>
+        <div class="embed-zone">
+          <div class="embed-zone-label">Interactive — try it here</div>
+          <div class="embed-zone-body"><div class="embed-placeholder">Each essay can embed a different interactive element here — a prompt, a calculator, a visualisation. Optional per essay.</div></div>
+        </div>
+        <p>The fix isn't better reporting. It's designing for signal preservation from the start — building systems where information doesn't have to travel through lossy human layers to reach the people who need it.</p>
+        <span id="s-tool"></span>
+        <div class="linked-card">
+          <div class="linked-card-label">Related tool</div>
+          <div class="linked-card-title" onclick="show('tool-single')">Meeting synthesis workflow →</div>
+          <div class="linked-card-desc">Turns messy meeting notes into clear decisions and actions — without losing the signal.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap"><div class="rule"></div>
+  <footer class="footer"><div class="footer-inner"><span class="footer-copy">Steph Koch-Yang</span><div class="footer-links"><a>LinkedIn</a><a>Contact</a></div></div></footer></div>
+</div>
+
+<!-- ════ TOOLS LIST ════ -->
+<div class="page" id="tools">
+  <div class="wrap">
+    <div class="page-hero"><a class="back-link" onclick="show('home')">← Home</a><div class="page-title">Tools</div></div>
+    <div class="rule"></div>
+    <div style="padding:4px 0 0">
+      <div class="list-row" onclick="show('tool-single')"><div class="lr-title">Meeting synthesis workflow</div><div class="lr-excerpt">Turns messy meeting notes into clear decisions, owners, and actions using a structured prompt.</div><div class="lr-meta">May 2025</div></div>
+      <div class="list-row"><div class="lr-title">GTM knowledge copilot</div><div class="lr-excerpt">An AI assistant for GTM planning — frameworks, account planning, and commercial decisions.</div><div class="lr-meta">Apr 2025</div></div>
+      <div class="list-row"><div class="lr-title">Org decision tracker</div><div class="lr-excerpt">A lightweight system for logging decisions, owners, and rationale across fast-moving teams.</div><div class="lr-meta">Mar 2025</div></div>
+      <div class="load-more">Load more</div>
+    </div>
+    <div class="rule"></div>
+    <footer class="footer"><div class="footer-inner"><span class="footer-copy">Steph Koch-Yang</span><div class="footer-links"><a>LinkedIn</a><a>Contact</a></div></div></footer>
+  </div>
+</div>
+
+<!-- ════ SINGLE TOOL ════ -->
+<div class="page" id="tool-single">
+  <div class="wrap">
+    <div class="tool-header"><a class="back-link" onclick="show('tools')">← Tools</a><div class="tool-h1">Meeting synthesis workflow</div><div class="tool-meta-line">Published May 2025</div></div>
+    <div class="rule"></div>
+    <div class="tool-body">
+      <p>Most meeting notes are written for the person who was in the room. Six weeks later, nobody can reconstruct what was actually agreed. This workflow turns raw notes into a clean summary: decisions, owners, open questions, and next steps.</p>
+      <h2>How to use it</h2>
+      <p>Paste your raw notes into the box below. Works best with 200–1000 words. The output follows a consistent structure regardless of how messy the input is.</p>
+      <div class="tool-interactive">
+        <div class="tool-interactive-label"><span>Try it — live demo</span><span class="tool-dl-btn">Download ↓</span></div>
+        <div class="tool-interactive-body">
+          <div class="mock-tool">
+            <div class="mock-item"><div class="mock-check done"></div><span style="text-decoration:line-through;color:#bbb;">Align on Q3 priorities with leadership</span></div>
+            <div class="mock-item"><div class="mock-check"></div><span>Draft comms plan for product launch</span></div>
+            <div class="mock-item"><div class="mock-check"></div><span>Share updated GTM model with sales team</span></div>
+            <div class="mock-item"><div class="mock-check"></div><span>Review budget variance — owner: Finance</span></div>
+            <div class="mock-add">+ Add item</div>
+          </div>
+        </div>
+      </div>
+      <div class="linked-card"><div class="linked-card-label">From the essay</div><div class="linked-card-title" onclick="show('essay-single')">Why large organisations become information black holes →</div></div>
+    </div>
+    <div class="rule"></div>
+    <footer class="footer"><div class="footer-inner"><span class="footer-copy">Steph Koch-Yang</span><div class="footer-links"><a>LinkedIn</a><a>Contact</a></div></div></footer>
+  </div>
+</div>
+
+<!-- ════ ABOUT ════ -->
+<div class="page" id="about">
+  <div class="wrap">
+    <div class="about-hero">
+      <div class="about-name">Steph Koch-Yang</div>
+      <div class="about-body">
+        <p>I run a global financial services organisation and have spent the last decade working across fintech, marketplaces, and GTM at scale — from early-stage scale-ups to large enterprise orgs with P&L ownership.</p>
+        <p>This site is where I think out loud. I write about the things I keep running into: how organisations actually work versus how they're supposed to, what product-led and AI-native approaches change about commercial execution, and the gap between strategy and real operating life.</p>
+        <p>Alongside the writing, I build small tools and workflows — mostly things I wished existed when I needed them.</p>
+      </div>
+      <div class="about-section-title">Previously</div>
+      <div class="logos-row"><span class="logo-pill">iZettle</span><span class="logo-pill">PayPal</span><span class="logo-pill">Airwallex</span></div>
+      <div class="about-section-title">Find me elsewhere</div>
+      <div class="about-links-wrap">
+        <div class="about-link-row"><span class="about-link-label">LinkedIn</span><span class="about-link-url">linkedin.com/in/stephkochyang</span></div>
+        <div class="about-link-row"><span class="about-link-label">Email</span><span class="about-link-url">steph@stephkochyang.com</span></div>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <footer class="footer"><div class="footer-inner"><span class="footer-copy">Steph Koch-Yang</span><div class="footer-links"><a>LinkedIn</a><a>Contact</a></div></div></footer>
+  </div>
+</div>
+
+<script>
+  const isMobile = () => window.innerWidth <= 640;
+
+  function show(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
+    document.getElementById(id).classList.add('visible');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('curr', a.dataset.page === id));
+
+    const navInner = document.getElementById('navInner');
+    if (id === 'essay-single' && !isMobile()) {
+      navInner.style.maxWidth = '880px';
+      navInner.style.paddingLeft = 'calc(32px + 180px + 32px)';
+      navInner.style.paddingRight = '32px';
+    } else {
+      navInner.style.maxWidth = '';
+      navInner.style.paddingLeft = '';
+      navInner.style.paddingRight = '';
+    }
+
+    // mobile contents button: only show on essay page on mobile
+    const btn = document.getElementById('mobileContentsBtn');
+    btn.style.display = (id === 'essay-single' && isMobile()) ? 'flex' : 'none';
+
+    closeMobileContents();
+    window.scrollTo(0, 0);
+  }
+
+  window.addEventListener('resize', () => {
+    const current = document.querySelector('.page.visible')?.id;
+    if (current) show(current);
+  });
+
+  function toggleDark() {
+    const isDark = document.body.classList.toggle('dark');
+    document.getElementById('lblLight').classList.toggle('on', !isDark);
+    document.getElementById('lblDark').classList.toggle('on', isDark);
+  }
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('navTagline').classList.toggle('hidden', window.scrollY > 50);
+  }, { passive: true });
+
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  window.addEventListener('scroll', () => {
+    const sections = ['s-overview','s-structural','s-costs','s-fix','s-tool'];
+    const items = document.querySelectorAll('.sidebar-item');
+    if (!items.length) return;
+    let current = 0;
+    sections.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 140) current = i;
+    });
+    items.forEach((item, i) => item.classList.toggle('active', i === current));
+  }, { passive: true });
+
+  function toggleMobileContents() {
+    document.getElementById('mobileContentsPanel').classList.toggle('open');
+  }
+  function closeMobileContents() {
+    document.getElementById('mobileContentsPanel')?.classList.remove('open');
+  }
+
+  // init
+  document.getElementById('mobileContentsBtn').style.display = 'none';
+</script>
+</body>
+</html>
