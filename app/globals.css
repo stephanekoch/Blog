@@ -55,7 +55,7 @@ body.dark .site-nav { background: #303030; }
 
 .nav-name-row {
   display: flex; justify-content: space-between; align-items: center;
-  width: 100%; margin-bottom: 8px;
+  width: 100%; margin-bottom: 4px;
 }
 
 .toggle-wrap {
@@ -94,7 +94,7 @@ body.dark .nav-name { color: #fff; }
 body.dark .nav-name:hover { color: #ccc; }
 
 .nav-links {
-  display: flex; gap: 24px; margin-bottom: 10px;
+  display: flex; gap: 24px; margin-bottom: 5px;
   align-items: center; width: 100%;
 }
 .nav-links a {
