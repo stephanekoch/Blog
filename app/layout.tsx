@@ -8,6 +8,13 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 export const metadata: Metadata = {
   title: 'Steph Koch-Yang',
   description: 'Notes on running organisations, building in fintech, and what AI actually changes for operators.',
+  manifest: '/manifest.json',
+  themeColor: '#faf9f7',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Steph Koch-Yang',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
