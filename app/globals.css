@@ -53,9 +53,14 @@ body.dark .site-nav { background: #303030; }
   display: flex; flex-direction: column; align-items: flex-start;
 }
 
+.nav-name-row {
+  display: flex; justify-content: space-between; align-items: center;
+  width: 100%; margin-bottom: 8px;
+}
+
 .toggle-wrap {
   display: flex; align-items: center; gap: 6px;
-  cursor: pointer; margin-bottom: 22px;
+  cursor: pointer;
 }
 .toggle-track {
   width: 28px; height: 14px; border-radius: 7px;
@@ -81,7 +86,7 @@ body.dark .toggle-labels .on { color: #aaa; }
 
 .nav-name {
   font-family: var(--serif); font-size: 12px; font-weight: 700; color: #000;
-  cursor: pointer; text-decoration: none; margin-bottom: 6px;
+  cursor: pointer; text-decoration: none;
   transition: color 0.15s; line-height: 1; display: block;
 }
 .nav-name:hover { color: #444; }

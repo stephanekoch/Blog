@@ -60,17 +60,19 @@ export function Nav({ config }: { config: SiteConfig }) {
     <>
       <nav className="site-nav">
         <div className="nav-inner" style={navInnerStyle}>
-          <div className="toggle-wrap" onClick={toggleDark}>
-            <div className="toggle-track">
-              <div className="toggle-thumb" />
-            </div>
-            <div className="toggle-labels">
-              <span className={!dark ? 'on' : ''}>Light</span>
-              <span>/</span>
-              <span className={dark ? 'on' : ''}>Dark</span>
+          <div className="nav-name-row">
+            <Link href="/" className="nav-name">Steph Koch-Yang</Link>
+            <div className="toggle-wrap" onClick={toggleDark}>
+              <div className="toggle-track">
+                <div className="toggle-thumb" />
+              </div>
+              <div className="toggle-labels">
+                <span className={!dark ? 'on' : ''}>Light</span>
+                <span>/</span>
+                <span className={dark ? 'on' : ''}>Dark</span>
+              </div>
             </div>
           </div>
-          <Link href="/" className="nav-name">Steph Koch-Yang</Link>
           <div className="nav-links">
             <Link href="/essays" className={pathname?.startsWith('/essays') ? 'curr' : ''}>Essays</Link>
             <Link href="/tools" className={pathname?.startsWith('/tools') ? 'curr' : ''}>Tools</Link>
