@@ -109,17 +109,14 @@ body.dark .nav-links a.curr { color: var(--text-primary-dk); }
 
 .mobile-contents-btn {
   display: none;
-  margin-left: auto;
-  align-items: center; gap: 6px;
-  font-family: var(--sans); font-size: 11px; font-weight: 500;
+  align-items: center;
   color: var(--text-secondary);
   background: #eeece8;
   border: 0.5px solid #dddbd6;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 7px;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
-  white-space: nowrap;
 }
 .mobile-contents-btn:hover { background: #e4e2de; color: var(--text-primary); }
 body.dark .mobile-contents-btn {

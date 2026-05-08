@@ -82,12 +82,11 @@ export function Nav({ config }: { config: SiteConfig }) {
                 className="mobile-contents-btn"
                 onClick={() => setMobileOpen(o => !o)}
               >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0 }}>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <line x1="1" y1="3" x2="13" y2="3" stroke="currentColor" strokeWidth="1.3" />
                   <line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" strokeWidth="1.3" />
                   <line x1="1" y1="11" x2="9" y2="11" stroke="currentColor" strokeWidth="1.3" />
                 </svg>
-                Contents
               </button>
             )}
           </div>
