@@ -55,7 +55,7 @@ body.dark .site-nav { background: #303030; }
 
 .nav-name-row {
   display: flex; justify-content: space-between; align-items: center;
-  width: 100%; margin-bottom: 4px;
+  width: 100%; margin-bottom: 2px;
 }
 
 .toggle-wrap {
@@ -85,16 +85,16 @@ body.dark .toggle-labels { color: #666; }
 body.dark .toggle-labels .on { color: #aaa; }
 
 .nav-name {
-  font-family: var(--serif); font-size: 12px; font-weight: 700; color: #000;
+  font-family: var(--serif); font-size: 10px; font-weight: 700; color: #000;
   cursor: pointer; text-decoration: none;
-  transition: color 0.15s; line-height: 1; display: block;
+  transition: color 0.15s; line-height: 1; display: block; letter-spacing: 0.03em;
 }
 .nav-name:hover { color: #444; }
 body.dark .nav-name { color: #fff; }
 body.dark .nav-name:hover { color: #ccc; }
 
 .nav-links {
-  display: flex; gap: 24px; margin-bottom: 5px;
+  display: flex; gap: 24px; margin-bottom: 2px;
   align-items: center; width: 100%;
 }
 .nav-links a {
