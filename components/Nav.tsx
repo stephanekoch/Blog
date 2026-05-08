@@ -22,7 +22,7 @@ export function Nav({ config }: { config: SiteConfig }) {
   }, [])
 
   useEffect(() => {
-    const onScroll = () => setTaglineHidden(window.scrollY > 50)
+    const onScroll = () => setTaglineHidden(prev => prev ? window.scrollY > 20 : window.scrollY > 70)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])

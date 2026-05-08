@@ -130,10 +130,13 @@ body.dark .mobile-contents-btn:hover { background: #525252; color: #f0f0ee; }
 
 .nav-tagline-wrap {
   max-height: 40px; overflow: hidden; opacity: 1;
-  transition: max-height 0.35s ease, opacity 0.35s ease, margin 0.35s ease;
+  transition: max-height 0.4s ease 0.15s, opacity 0.2s ease, margin 0.4s ease 0.15s;
   margin-bottom: 14px;
 }
-.nav-tagline-wrap.hidden { max-height: 0; opacity: 0; margin-bottom: 0; }
+.nav-tagline-wrap.hidden {
+  max-height: 0; opacity: 0; margin-bottom: 0;
+  transition: opacity 0.2s ease, max-height 0.35s ease 0.15s, margin 0.35s ease 0.15s;
+}
 .nav-tagline {
   font-family: var(--serif); font-size: 11px; font-style: italic;
   color: #888; line-height: 1.5;
