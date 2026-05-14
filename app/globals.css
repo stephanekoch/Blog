@@ -390,10 +390,10 @@ body.dark .about-name { color: var(--text-primary-dk); }
 body.dark .about-body p { color: #c8c8c6; }
 .about-section-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--text-primary); margin: 28px 0 24px; }
 body.dark .about-section-title { color: var(--text-primary-dk); }
-.logos-row { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; margin-bottom: 28px; }
+.logos-row { display: flex; gap: 18px; align-items: center; justify-content: flex-start; margin-bottom: 28px; }
 .logo-pill { display: inline-flex; align-items: center; font-family: var(--sans); font-size: 11px; color: #888; }
 body.dark .logo-pill { color: #bbb; }
-.logo-pill img { height: 22px; width: auto; display: block; }
+.logo-pill img { height: 18px; width: auto; display: block; }
 .logo-dark { display: none; }
 body.dark .logo-light { display: none; }
 body.dark .logo-dark { display: block; }
