@@ -27,6 +27,7 @@ export interface ContentItem {
 export interface SiteConfig {
   navTagline: string
   bioText: string
+  bioText2: string
   linkedIn: string
   email: string
   logos: { name: string; file: string }[]
@@ -43,6 +44,7 @@ export function getSiteConfig(): SiteConfig {
   return {
     navTagline: data.navTagline ?? '',
     bioText: data.bioText ?? '',
+    bioText2: data.bioText2 ?? '',
     linkedIn: data.linkedIn ?? '',
     email: data.email ?? '',
     logos: data.logos ?? [],

@@ -41,6 +41,7 @@ export default function HomePage() {
       <div className="rule" />
       <div className="bio-section">
         <p className="bio-text">{config.bioText}</p>
+        {config.bioText2 && <p className="bio-text">{config.bioText2}</p>}
       </div>
       <div className="rule" />
       <Footer config={config} />
