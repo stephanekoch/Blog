@@ -26,11 +26,11 @@ export default function AboutPage() {
               <span key={logo.name} className="logo-pill">
                 {exists && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={`/images/logos/${logo.file}`} alt={logo.name} className="logo-light" />
+                  <img src={`/images/logos/${logo.file}`} alt={logo.name} className={`logo-light logo-${logo.name.toLowerCase()}`} />
                 )}
                 {existsDark && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={`/images/logos/${logo.fileDark}`} alt={logo.name} className="logo-dark" />
+                  <img src={`/images/logos/${logo.fileDark}`} alt={logo.name} className={`logo-dark logo-${logo.name.toLowerCase()}`} />
                 )}
                 {!exists && !existsDark && logo.name}
               </span>
