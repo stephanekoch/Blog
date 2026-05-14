@@ -22,8 +22,9 @@ export function Nav({ config }: { config: SiteConfig }) {
   }, [])
 
   useEffect(() => {
-    const meta = document.querySelector('meta[name="theme-color"]')
-    if (meta) meta.setAttribute('content', dark ? '#303030' : '#f2f1ee')
+    document.querySelectorAll('meta[name="theme-color"]').forEach(meta => {
+      meta.setAttribute('content', dark ? '#303030' : '#f2f1ee')
+    })
   }, [dark])
 
   useEffect(() => {

@@ -1,9 +1,9 @@
 {
-  "name": "Steph Koch-Yang",
-  "short_name": "Steph Koch-Yang",
+  "name": "Blog",
+  "short_name": "Blog",
   "description": "Notes on how AI is changing the way modern companies build and scale.",
   "start_url": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#f2f1ee",
   "theme_color": "#f2f1ee",
   "icons": [
