@@ -46,6 +46,7 @@ export default async function EssayPage({ params }: Props) {
       <div className="essay-layout">
         <EssaySidebar headings={headings} />
         <div className="essay-main">
+          <Link href="/essays" className="mobile-essay-back">← Essays</Link>
           <div className="essay-h1">{fm.title}</div>
           <div className="essay-byline">
             Steph Koch-Yang
