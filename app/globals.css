@@ -93,11 +93,11 @@ body.dark .toggle-labels { color: #666; }
 body.dark .toggle-labels .on { color: #aaa; }
 
 .nav-name {
-  font-family: 'Josefin Sans', sans-serif; font-size: 10px; font-weight: 600; color: #888888;
+  font-family: 'Josefin Sans', sans-serif; font-size: 10px; font-weight: 600; color: #555555;
   cursor: pointer; text-decoration: none;
-  transition: color 0.15s; line-height: 1; display: block; letter-spacing: 0.12em; text-transform: uppercase;
+  transition: color 0.15s; line-height: 1; display: block; letter-spacing: 0.06em; text-transform: uppercase;
 }
-.nav-name:hover { color: #555; }
+.nav-name:hover { color: #333; }
 body.dark .nav-name { color: #cccccc; }
 body.dark .nav-name:hover { color: #fff; }
 
