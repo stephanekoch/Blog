@@ -53,6 +53,8 @@ export function Nav({ config }: { config: SiteConfig }) {
   }
 
   const isEssayRoute = pathname?.startsWith('/essays/') && pathname !== '/essays'
+  const isToolRoute = pathname?.startsWith('/tools/') && pathname !== '/tools'
+  const showProgress = isEssayRoute || isToolRoute
 
   const navInnerStyle: React.CSSProperties =
     isEssayRoute
@@ -95,7 +97,7 @@ export function Nav({ config }: { config: SiteConfig }) {
           </div>
         </div>
         <div className="nav-rule" />
-        {isEssayRoute && (
+        {showProgress && (
           <div className="read-progress" style={{ width: `${scrollProgress}%` }} />
         )}
       </nav>
