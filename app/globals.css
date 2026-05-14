@@ -326,7 +326,7 @@ body.dark .essay-byline { color: var(--text-muted-dk); }
 body.dark .essay-body p { color: #c8c8c6; }
 
 .essay-body h2 {
-  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  font-family: var(--sans); font-size: 13px; font-weight: 600;
   color: var(--text-primary); margin: 32px 0 10px; letter-spacing: 0.02em; scroll-margin-top: 120px;
 }
 body.dark .essay-body h2 { color: var(--text-primary-dk); }
@@ -369,7 +369,7 @@ body.dark .tool-meta-line { color: var(--text-muted-dk); }
 .tool-body { padding: 24px 0 16px; }
 .tool-body p { font-family: var(--serif); font-size: 16px; color: #444; line-height: 1.9; margin-bottom: 18px; }
 body.dark .tool-body p { color: #c8c8c6; }
-.tool-body h2 { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--text-primary); margin: 26px 0 10px; letter-spacing: 0.02em; }
+.tool-body h2 { font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--text-primary); margin: 26px 0 10px; letter-spacing: 0.02em; }
 body.dark .tool-body h2 { color: var(--text-primary-dk); }
 
 .tool-interactive { margin: 22px 0; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; }
