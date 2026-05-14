@@ -12,6 +12,7 @@ export default function AboutPage() {
     <div className="wrap">
       <div className="about-hero">
         <div className="about-name">Steph Koch-Yang</div>
+        <div className="about-section-title">About</div>
         <div className="about-body">
           <MDXRemote source={config.aboutBody} />
         </div>
@@ -34,19 +35,6 @@ export default function AboutPage() {
               </span>
             )
           })}
-        </div>
-        <div className="about-section-title">Find me elsewhere</div>
-        <div className="about-links-wrap">
-          <div className="about-link-row">
-            <span className="about-link-label">LinkedIn</span>
-            <a href={config.linkedIn} target="_blank" rel="noopener noreferrer" className="about-link-url">
-              {config.linkedIn.replace('https://', '')}
-            </a>
-          </div>
-          <div className="about-link-row">
-            <span className="about-link-label">Email</span>
-            <a href={`mailto:${config.email}`} className="about-link-url">{config.email}</a>
-          </div>
         </div>
       </div>
       <div className="rule" />
