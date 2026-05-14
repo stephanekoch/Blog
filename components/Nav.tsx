@@ -26,7 +26,7 @@ export function Nav({ config }: { config: SiteConfig }) {
     document.querySelectorAll('meta[name="theme-color"]').forEach(meta => {
       meta.setAttribute('content', dark ? '#303030' : '#f2f1ee')
     })
-  }, [dark])
+  }, [dark, pathname])
 
   useEffect(() => {
     const onScroll = () => {

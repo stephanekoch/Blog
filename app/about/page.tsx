@@ -10,12 +10,10 @@ export default function AboutPage() {
   return (
     <div className="wrap">
       <div className="about-hero">
-        <div className="about-name">Steph Koch-Yang</div>
-        <div className="about-section-title">About</div>
         <div className="about-body">
           <MDXRemote source={config.aboutBody} />
         </div>
-        <div className="about-section-title">Previously</div>
+        <div className="about-section-title">Experience</div>
         <div className="logos-row">
           {config.logos.map(logo => {
             const logoPath = path.join(process.cwd(), 'public', 'images', 'logos', logo.file)
