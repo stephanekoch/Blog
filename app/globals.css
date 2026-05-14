@@ -326,8 +326,8 @@ body.dark .essay-byline { color: var(--text-muted-dk); }
 body.dark .essay-body p { color: #c8c8c6; }
 
 .essay-body h2 {
-  font-family: var(--serif); font-size: 17px; font-weight: 700;
-  color: var(--text-primary); margin: 32px 0 12px; scroll-margin-top: 120px;
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  color: var(--text-primary); margin: 32px 0 10px; letter-spacing: 0.02em; scroll-margin-top: 120px;
 }
 body.dark .essay-body h2 { color: var(--text-primary-dk); }
 
