@@ -7,7 +7,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: 'Steph Koch-Yang',
-  description: 'Notes on running organisations, building in fintech, and what AI actually changes for operators.',
+  description: 'Notes on how AI is changing the way modern companies build and scale.',
   manifest: '/manifest.json',
   themeColor: '#faf9f7',
   appleWebApp: {
