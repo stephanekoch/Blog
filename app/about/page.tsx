@@ -1,7 +1,6 @@
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getSiteConfig } from '@/lib/content'
 import { Footer } from '@/components/Footer'
-import Image from 'next/image'
 import fs from 'fs'
 import path from 'path'
 
@@ -25,27 +24,15 @@ export default function AboutPage() {
             const existsDark = logoDarkPath ? fs.existsSync(logoDarkPath) : false
             return (
               <span key={logo.name} className="logo-pill">
-                {exists ? (
-                  <Image
-                    src={`/images/logos/${logo.file}`}
-                    alt={logo.name}
-                    width={60}
-                    height={20}
-                    className="logo-light"
-                    style={{ objectFit: 'contain', display: 'inline-block' }}
-                  />
-                ) : null}
-                {existsDark ? (
-                  <Image
-                    src={`/images/logos/${logo.fileDark}`}
-                    alt={logo.name}
-                    width={60}
-                    height={20}
-                    className="logo-dark"
-                    style={{ objectFit: 'contain', display: 'inline-block' }}
-                  />
-                ) : null}
-                {!exists && !existsDark ? logo.name : null}
+                {exists && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={`/images/logos/${logo.file}`} alt={logo.name} className="logo-light" />
+                )}
+                {existsDark && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={`/images/logos/${logo.fileDark}`} alt={logo.name} className="logo-dark" />
+                )}
+                {!exists && !existsDark && logo.name}
               </span>
             )
           })}

@@ -390,12 +390,13 @@ body.dark .about-name { color: var(--text-primary-dk); }
 body.dark .about-body p { color: #c8c8c6; }
 .about-section-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--text-primary); margin: 28px 0 24px; }
 body.dark .about-section-title { color: var(--text-primary-dk); }
-.logos-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
-.logo-pill { font-family: var(--sans); font-size: 11px; font-weight: 500; color: #888; border: 0.5px solid #e0e0dc; padding: 6px 16px; border-radius: 20px; background: #fff; }
-body.dark .logo-pill { background: #333; border-color: #555; color: #bbb; }
+.logos-row { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; margin-bottom: 28px; }
+.logo-pill { display: inline-flex; align-items: center; font-family: var(--sans); font-size: 11px; color: #888; }
+body.dark .logo-pill { color: #bbb; }
+.logo-pill img { height: 22px; width: auto; display: block; }
 .logo-dark { display: none; }
 body.dark .logo-light { display: none; }
-body.dark .logo-dark { display: inline-block; }
+body.dark .logo-dark { display: block; }
 .about-links-wrap { padding-bottom: 40px; }
 .about-link-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 0.5px solid var(--border-row); }
 .about-link-row:first-of-type { border-top: 0.5px solid var(--border-row); }
