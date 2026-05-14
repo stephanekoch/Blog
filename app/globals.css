@@ -396,6 +396,13 @@ body.dark .about-link-label { color: #d8d8d6; }
 body.dark .about-link-url { color: var(--text-muted-dk); }
 body.dark .about-link-url:hover { color: #eee; }
 
+/* essay page footer aligned to essay text column */
+.essay-footer-wrap {
+  max-width: var(--essay-max);
+  margin: 0 auto;
+  padding: 0 var(--essay-pad) 0 calc(var(--essay-pad) + var(--sidebar-w) + var(--essay-gap));
+}
+
 /* FOOTER */
 .footer { padding: 24px 0; }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; }
@@ -410,6 +417,7 @@ body.dark .footer-links a:hover { color: #ccc; }
 /* MOBILE */
 @media (max-width: 640px) {
   :root { --pad: 20px; --essay-pad: 20px; }
+  .essay-footer-wrap { padding: 0 var(--pad); }
   .essay-layout { flex-direction: column; }
   .essay-sidebar { display: none; }
   .essay-main { border-left: none; padding: 20px 0 40px; }

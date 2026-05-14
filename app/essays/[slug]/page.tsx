@@ -69,7 +69,7 @@ export default async function EssayPage({ params }: Props) {
           </div>
         </div>
       </div>
-      <div className="wrap">
+      <div className="essay-footer-wrap">
         <div className="rule" />
         <Footer config={config} />
       </div>
