@@ -395,6 +395,7 @@ body.dark .about-section-title { color: var(--text-primary-dk); }
 body.dark .logo-pill { color: #bbb; }
 .logo-light, .logo-dark { height: 16px; width: auto; }
 .logo-airwallex { height: 13px; }
+body.dark .logo-airwallex { height: 16px; }
 .logo-paypal { height: 19px; }
 .logo-dark { display: none; }
 body.dark .logo-light { display: none; }
