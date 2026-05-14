@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500&display=swap');
 @import "tailwindcss";
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -180,7 +180,7 @@ body.dark .rule { background: #555; }
 .section { padding: 40px 0; }
 
 .section-label {
-  font-family: var(--serif); font-size: 18px; font-weight: 520;
+  font-family: var(--serif); font-size: 18px; font-weight: 500;
   color: var(--text-primary); margin-bottom: 24px;
 }
 body.dark .section-label { color: var(--text-primary-dk); }
@@ -239,7 +239,7 @@ body.dark .bio-text { color: var(--text-muted-dk); }
 /* LIST PAGES */
 .page-hero { padding: 28px 0 20px; }
 .page-title {
-  font-family: var(--serif); font-size: 18px; font-weight: 520; color: var(--text-primary);
+  font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--text-primary);
 }
 body.dark .page-title { color: var(--text-primary-dk); }
 
