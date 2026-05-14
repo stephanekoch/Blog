@@ -47,6 +47,14 @@ body.dark { background: var(--bg-dark); color: var(--text-primary-dk); }
 }
 body.dark .site-nav { background: #303030; }
 
+.read-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 2px; background: #333;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+body.dark .read-progress { background: #c8c8c6; }
+
 .nav-inner {
   max-width: var(--max); margin: 0 auto;
   padding: 20px var(--pad) 10px;

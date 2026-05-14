@@ -8,9 +8,9 @@ import type { SiteConfig } from '@/lib/content'
 export function Nav({ config }: { config: SiteConfig }) {
   const pathname = usePathname()
   const [dark, setDark] = useState(false)
-  const [taglineHidden, setTaglineHidden] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [headings, setHeadings] = useState<{ id: string; text: string }[]>([])
+  const [scrollProgress, setScrollProgress] = useState(0)
   const panelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -22,14 +22,17 @@ export function Nav({ config }: { config: SiteConfig }) {
   }, [])
 
   useEffect(() => {
-    const onScroll = () => setTaglineHidden(prev => prev ? window.scrollY > 20 : window.scrollY > 70)
+    const onScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight
+      setScrollProgress(scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0)
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
     setMobileOpen(false)
-    setTaglineHidden(false)
+    setScrollProgress(0)
     window.scrollTo(0, 0)
   }, [pathname])
 
@@ -90,11 +93,11 @@ export function Nav({ config }: { config: SiteConfig }) {
               </button>
             )}
           </div>
-          <div className={`nav-tagline-wrap${taglineHidden ? ' hidden' : ''}`}>
-            <div className="nav-tagline">{config.navTagline}</div>
-          </div>
         </div>
         <div className="nav-rule" />
+        {isEssayRoute && (
+          <div className="read-progress" style={{ width: `${scrollProgress}%` }} />
+        )}
       </nav>
 
       {isEssayRoute && headings.length > 0 && (
