@@ -30,7 +30,7 @@ export interface SiteConfig {
   bioText2: string
   linkedIn: string
   email: string
-  logos: { name: string; file: string }[]
+  logos: { name: string; file: string; fileDark?: string }[]
   aboutBody: string
 }
 
