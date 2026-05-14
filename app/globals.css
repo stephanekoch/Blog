@@ -189,7 +189,8 @@ body.dark .section-label { color: var(--text-primary-dk); }
 }
 .item-row:first-of-type { border-top: 0.5px solid var(--border-row); }
 body.dark .item-row, body.dark .item-row:first-of-type { border-color: var(--border-row-dk); }
-.item-row:hover .item-title { font-weight: 600; }
+.item-row:hover .item-title { font-weight: 500; color: #000; }
+body.dark .item-row:hover .item-title { color: #fff; }
 
 .item-title {
   font-family: var(--serif); font-size: 16px; font-weight: 400;
@@ -246,7 +247,8 @@ body.dark .page-title { color: var(--text-primary-dk); }
 }
 .list-row:first-of-type { border-top: 0.5px solid var(--border-row); }
 body.dark .list-row, body.dark .list-row:first-of-type { border-color: var(--border-row-dk); }
-.list-row:hover .lr-title { font-weight: 600; }
+.list-row:hover .lr-title { font-weight: 500; color: #000; }
+body.dark .list-row:hover .lr-title { color: #fff; }
 
 .lr-title {
   font-family: var(--serif); font-size: 17px; font-weight: 400;
