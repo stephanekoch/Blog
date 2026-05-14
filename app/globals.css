@@ -58,12 +58,11 @@ body.dark .read-progress { background: #c8c8c6; }
 .nav-inner {
   max-width: var(--max); margin: 0 auto;
   padding: 20px var(--pad) 10px;
-  display: flex; flex-direction: column; align-items: flex-start;
+  display: flex; flex-direction: row; align-items: center; justify-content: space-between;
 }
 
-.nav-name-row {
-  display: flex; justify-content: space-between; align-items: center;
-  width: 100%; margin-bottom: 2px;
+.nav-left {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
 }
 
 .toggle-wrap {
@@ -83,27 +82,27 @@ body.dark .toggle-track { background: #555; border-color: #666; }
   transition: left 0.2s, background 0.2s;
 }
 body.dark .toggle-thumb { left: 16px; background: #ccc; border-color: #aaa; }
-.toggle-labels {
-  display: flex; gap: 3px;
-  font-family: var(--sans); font-size: 9px;
-  color: #aaa; letter-spacing: 0.03em;
+.toggle-icon {
+  width: 12px; height: 12px; flex-shrink: 0;
+  color: #bbb; opacity: 0.5;
+  transition: opacity 0.2s, color 0.2s;
 }
-body.dark .toggle-labels { color: #666; }
-.toggle-labels .on { color: var(--text-secondary); font-weight: 500; }
-body.dark .toggle-labels .on { color: #aaa; }
+.toggle-icon.active { color: #777; opacity: 1; }
+body.dark .toggle-icon { color: #666; opacity: 0.5; }
+body.dark .toggle-icon.active { color: #bbb; opacity: 1; }
 
 .nav-name {
   font-family: 'Josefin Sans', sans-serif; font-size: 10px; font-weight: 600; color: #555555;
   cursor: pointer; text-decoration: none;
-  transition: color 0.15s; line-height: 1; display: block; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: color 0.15s; line-height: 1; display: block; letter-spacing: 0.02em; text-transform: uppercase;
 }
 .nav-name:hover { color: #333; }
 body.dark .nav-name { color: #cccccc; }
 body.dark .nav-name:hover { color: #fff; }
 
 .nav-links {
-  display: flex; gap: 24px; margin-bottom: 2px;
-  align-items: center; width: 100%;
+  display: flex; gap: 24px;
+  align-items: center;
 }
 .nav-links a {
   font-family: var(--sans); font-size: 15px; font-weight: 500;

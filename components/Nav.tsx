@@ -70,44 +70,44 @@ export function Nav({ config }: { config: SiteConfig }) {
     <>
       <nav className="site-nav">
         <div className="nav-inner" style={navInnerStyle}>
-          <div className="nav-name-row">
+          <div className="nav-left">
             <Link href="/" className="nav-name">Steph Koch-Yang</Link>
-            <div className="toggle-wrap" onClick={toggleDark}>
-              <svg className={`toggle-icon${!dark ? ' active' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="4"/>
-                <line x1="12" y1="2" x2="12" y2="6"/>
-                <line x1="12" y1="18" x2="12" y2="22"/>
-                <line x1="4.22" y1="4.22" x2="7.05" y2="7.05"/>
-                <line x1="16.95" y1="16.95" x2="19.78" y2="19.78"/>
-                <line x1="2" y1="12" x2="6" y2="12"/>
-                <line x1="18" y1="12" x2="22" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="7.05" y2="16.95"/>
-                <line x1="16.95" y1="7.05" x2="19.78" y2="4.22"/>
-              </svg>
-              <div className="toggle-track">
-                <div className="toggle-thumb" />
-              </div>
-              <svg className={`toggle-icon${dark ? ' active' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
+            <div className="nav-links">
+              <Link href="/essays" className={pathname?.startsWith('/essays') ? 'curr' : ''}>Essays</Link>
+              <Link href="/tools" className={pathname?.startsWith('/tools') ? 'curr' : ''}>Tools</Link>
+              <Link href="/about" className={pathname === '/about' ? 'curr' : ''}>About</Link>
+              {isEssayRoute && headings.length > 0 && (
+                <button
+                  className="mobile-contents-btn"
+                  onClick={() => setMobileOpen(o => !o)}
+                >
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <line x1="1" y1="3" x2="13" y2="3" stroke="currentColor" strokeWidth="1.3" />
+                    <line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" strokeWidth="1.3" />
+                    <line x1="1" y1="11" x2="9" y2="11" stroke="currentColor" strokeWidth="1.3" />
+                  </svg>
+                </button>
+              )}
             </div>
           </div>
-          <div className="nav-links">
-            <Link href="/essays" className={pathname?.startsWith('/essays') ? 'curr' : ''}>Essays</Link>
-            <Link href="/tools" className={pathname?.startsWith('/tools') ? 'curr' : ''}>Tools</Link>
-            <Link href="/about" className={pathname === '/about' ? 'curr' : ''}>About</Link>
-            {isEssayRoute && headings.length > 0 && (
-              <button
-                className="mobile-contents-btn"
-                onClick={() => setMobileOpen(o => !o)}
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <line x1="1" y1="3" x2="13" y2="3" stroke="currentColor" strokeWidth="1.3" />
-                  <line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" strokeWidth="1.3" />
-                  <line x1="1" y1="11" x2="9" y2="11" stroke="currentColor" strokeWidth="1.3" />
-                </svg>
-              </button>
-            )}
+          <div className="toggle-wrap" onClick={toggleDark}>
+            <svg className={`toggle-icon${!dark ? ' active' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="4"/>
+              <line x1="12" y1="2" x2="12" y2="6"/>
+              <line x1="12" y1="18" x2="12" y2="22"/>
+              <line x1="4.22" y1="4.22" x2="7.05" y2="7.05"/>
+              <line x1="16.95" y1="16.95" x2="19.78" y2="19.78"/>
+              <line x1="2" y1="12" x2="6" y2="12"/>
+              <line x1="18" y1="12" x2="22" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="7.05" y2="16.95"/>
+              <line x1="16.95" y1="7.05" x2="19.78" y2="4.22"/>
+            </svg>
+            <div className="toggle-track">
+              <div className="toggle-thumb" />
+            </div>
+            <svg className={`toggle-icon${dark ? ' active' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
           </div>
         </div>
         <div className="nav-rule" />
