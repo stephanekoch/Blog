@@ -180,7 +180,7 @@ body.dark .rule { background: #555; }
 .section { padding: 40px 0; }
 
 .section-label {
-  font-family: var(--serif); font-size: 18px; font-weight: 600;
+  font-family: var(--serif); font-size: 18px; font-weight: 550;
   color: var(--text-primary); margin-bottom: 24px;
 }
 body.dark .section-label { color: var(--text-primary-dk); }
@@ -239,7 +239,7 @@ body.dark .bio-text { color: var(--text-muted-dk); }
 /* LIST PAGES */
 .page-hero { padding: 28px 0 20px; }
 .page-title {
-  font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--text-primary);
+  font-family: var(--serif); font-size: 18px; font-weight: 550; color: var(--text-primary);
 }
 body.dark .page-title { color: var(--text-primary-dk); }
 
