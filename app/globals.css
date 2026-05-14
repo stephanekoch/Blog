@@ -39,6 +39,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 body.dark { background: var(--bg-dark); color: var(--text-primary-dk); }
+html.dark { background: #303030; }
 
 /* NAV */
 .site-nav {

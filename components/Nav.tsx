@@ -18,6 +18,7 @@ export function Nav({ config }: { config: SiteConfig }) {
     if (saved === 'dark') {
       setDark(true)
       document.body.classList.add('dark')
+      document.documentElement.classList.add('dark')
     }
   }, [])
 
@@ -55,6 +56,7 @@ export function Nav({ config }: { config: SiteConfig }) {
     const next = !dark
     setDark(next)
     document.body.classList.toggle('dark', next)
+    document.documentElement.classList.toggle('dark', next)
     localStorage.setItem('theme', next ? 'dark' : 'light')
   }
 
