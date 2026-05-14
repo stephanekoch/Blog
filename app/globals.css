@@ -386,13 +386,13 @@ body.dark .tool-dl-btn { background: #333; border-color: #555; color: #bbb; }
 body.dark .tool-interactive-body { background: #2e2e2e; }
 
 /* ABOUT */
-.about-hero { padding: 28px 0 28px; }
+.about-hero { padding: 48px 0 28px; }
 .about-name { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--text-primary); margin-bottom: 22px; }
 body.dark .about-name { color: var(--text-primary-dk); }
 .about-body p { font-family: var(--serif); font-size: 16px; color: #444; line-height: 1.9; margin-bottom: 18px; }
 body.dark .about-body p { color: #c8c8c6; }
-.about-section-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--text-primary); margin: 28px 0 24px; }
-body.dark .about-section-title { color: var(--text-primary-dk); }
+.about-section-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: #aaa; margin: 28px 0 24px; }
+body.dark .about-section-title { color: #666; }
 .logos-row { display: flex; gap: 20px; align-items: center; justify-content: flex-start; margin-bottom: 28px; }
 .logo-pill { display: inline-flex; align-items: center; font-family: var(--sans); font-size: 11px; color: #888; }
 body.dark .logo-pill { color: #bbb; }
