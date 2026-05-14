@@ -22,6 +22,11 @@ export function Nav({ config }: { config: SiteConfig }) {
   }, [])
 
   useEffect(() => {
+    const meta = document.querySelector('meta[name="theme-color"]')
+    if (meta) meta.setAttribute('content', dark ? '#303030' : '#f2f1ee')
+  }, [dark])
+
+  useEffect(() => {
     const onScroll = () => {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight
       setScrollProgress(scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0)

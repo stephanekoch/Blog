@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500&display=swap');
 @import "tailwindcss";
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -93,7 +93,7 @@ body.dark .toggle-labels { color: #666; }
 body.dark .toggle-labels .on { color: #aaa; }
 
 .nav-name {
-  font-family: var(--serif); font-size: 10px; font-weight: 700; color: #000;
+  font-family: var(--serif); font-size: 10px; font-weight: 700; color: #222;
   cursor: pointer; text-decoration: none;
   transition: color 0.15s; line-height: 1; display: block; letter-spacing: 0.03em;
 }

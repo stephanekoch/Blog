@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Nav } from '@/components/Nav'
 import { getSiteConfig } from '@/lib/content'
@@ -9,12 +9,15 @@ export const metadata: Metadata = {
   title: 'Steph Koch-Yang',
   description: 'Notes on how AI is changing the way modern companies build and scale.',
   manifest: '/manifest.json',
-  themeColor: '#faf9f7',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
     title: 'Steph Koch-Yang',
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#f2f1ee',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

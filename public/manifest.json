@@ -1,11 +1,11 @@
 {
-  "name": "Blog",
-  "short_name": "Blog",
-  "description": "Notes on running organisations, building in fintech, and what AI actually changes for operators.",
+  "name": "Steph Koch-Yang",
+  "short_name": "Steph Koch-Yang",
+  "description": "Notes on how AI is changing the way modern companies build and scale.",
   "start_url": "/",
   "display": "fullscreen",
-  "background_color": "#faf9f7",
-  "theme_color": "#faf9f7",
+  "background_color": "#f2f1ee",
+  "theme_color": "#f2f1ee",
   "icons": [
     {
       "src": "/icon-192.png",
